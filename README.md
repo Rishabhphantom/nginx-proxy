@@ -1,4 +1,4 @@
-# nginx-proxy
+# Nginx-reverse-proxy
 The following repo includes the required nginx config, backend config and front end config
 
 React Web Application with Node.js Backend and Nginx Reverse Proxy 
