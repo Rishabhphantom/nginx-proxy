@@ -97,8 +97,36 @@ Test and reload Nginx:
 sudo nginx -t
 sudo systemctl reload nginx
 
+Example API Request Through Nginx
+curl -X POST http://localhost/api/submit \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Test","email":"test@example.com","message":"Test message"}'
+Expected response:
+{"message":"Your response has been saved"}
 
 
+✅ Final Directory Structure
+/home/your-username/react-app/
+├── frontend/
+│   ├── build/          # Static files served by Nginx
+│   └── ...
+├── backend/
+│   ├── server.js       # Express backend running on port 4000
+│   └── ...
 
+🧪 Testing
+1. Open browser: http://localhost
+2. Submit form
+3. Verify data is stored in MySQL:
+mysql -u root -p
+USE react;
+SELECT * FROM formData;
 
+🛠️ Troubleshooting
+If Nginx fails to start:
 
+sudo tail -f /var/log/nginx/error.log
+Ensure backend is running on port 4000.
+Check .env file for correct database credentials.
+
+✅ React app is now live at http://localhost, and all API calls go through Nginx to Node.js backend.
